@@ -24,9 +24,8 @@ public class Quicksort extends Sort
         LinkedList<T> right = new LinkedList<>();
         LinkedList<T> left = new LinkedList<>();
 
-        int pivotIndex = getPivotIndex(list);
-        T pivot = list.get(pivotIndex);
-        list.remove(pivotIndex);
+        T pivot = getPivot(list);
+        list.remove(pivot);
 
         for (T element : list) {
             if (element.compareTo(pivot) <= 0)
@@ -49,8 +48,8 @@ public class Quicksort extends Sort
      * @param <T>
      * @return pivot index
      */
-    protected <T extends Comparable<T>> int getPivotIndex(List<T> list)
+    protected <T extends Comparable<T>> T getPivot(List<T> list)
     {
-        return list.indexOf(list.get(0));
+        return list.get(0);
     }
 }

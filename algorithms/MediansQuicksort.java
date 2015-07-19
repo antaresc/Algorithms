@@ -1,5 +1,6 @@
 package main.com.acscooter.algorithms;
 
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -17,19 +18,51 @@ public class MediansQuicksort extends Quicksort
      * @return pivot index
      */
     @Override
-    protected <T extends Comparable<T>> int getPivotIndex(List<T> list)
+    protected <T extends Comparable<T>> T getPivot(List<T> list)
     {
-//        if less than or equal to five find the median
-//        split into groups of five
-//        calculate median
-//        create list of medians
-//        recurse
-        return -1;
+        if (list.size() <= 5)
+            return getMedian(list);
+        LinkedList<T> medians = new LinkedList<>();
+
+        LinkedList<T> sublist = new LinkedList<>();
+        for (int i = 0; i < list.size(); i ++)
+        {
+            sublist.add(list.get(i));
+
+            if (sublist.size() == 5 || i == list.size() - 1)
+            {
+                medians.add(getMedian(sublist));
+                sublist = new LinkedList<>();
+            }
+        }
+
+        return getPivot(medians);
     }
 
-    private <T extends Comparable<T>> int getMedianIndex(List<T> list)
+    /**
+     * Determines the median of a list of five or less elements
+     * @param list
+     * @param <T>
+     * @return the median
+     * TODO: implement
+     */
+    private <T extends Comparable<T>> T getMedian(List<T> list)
     {
-        return -1;
-    }
+//        assert list.size() <= 5;
+//
+//        if (list.size() == 1)
+//            return list.get(0);
+//        else if (list.size() == 2)
+//        {
+//            if (list.get(1).compareTo(list.get(0)) < 0)
+//                return list.get(0);
+//            return list.get(1);
+//        }
+//        else if (list.size() == 3)
+//        {
+//            if (list.get(1))
+//        }
 
+        return list.get(0);
+    }
 }

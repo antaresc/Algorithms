@@ -18,9 +18,10 @@ public class RandomizedQuicksort extends Quicksort
      * @return pivot index
      */
     @Override
-    protected <T extends Comparable<T>> int getPivotIndex(List<T> list)
+    protected <T extends Comparable<T>> T getPivot(List<T> list)
     {
         Random rngGods = new Random(133713371337L);
-        return rngGods.nextInt(list.size());
+        int index = rngGods.nextInt(list.size());
+        return list.get(index);
     }
 }
