@@ -1,6 +1,7 @@
 package main.com.acscooter.datastructures;
 
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -90,11 +91,41 @@ public class Stack<T> implements Cloneable, Serializable, Iterable<T>
      * Pushes a new value on to the stack
      * @param value
      */
-    public void push(T value)
+    public boolean push(T value)
     {
         Node node = new Node(value, head);
         head = node;
         size ++;
+        return true;
+    }
+
+
+    /**
+     * Pushes all elements of values in sequence on to the stack
+     * @param values
+     * @return if pushed
+     */
+    public boolean push(List<T> values)
+    {
+        for (T value : values)
+        {
+            Node node = new Node(value, head);
+            head = node;
+            size ++;
+        }
+        return true;
+    }
+
+
+    /**
+     * Pushes all elements of values in sequence on to the stack
+     * @param values
+     * @return if pushed
+     */
+    public boolean push(T... values)
+    {
+        push(Arrays.asList(values));
+        return true;
     }
 
 
@@ -191,7 +222,7 @@ public class Stack<T> implements Cloneable, Serializable, Iterable<T>
         {
             if (!hasNext())
                 throw new NoSuchElementException();
-            
+
             T value = current.value;
             current = current.next;
             return value;
