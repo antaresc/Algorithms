@@ -11,9 +11,12 @@ import java.util.NoSuchElementException;
  * @author      Antares Chen
  * @since       2015-07-19
  * The stack data structure is a sequential list accessed in Last In First Out (LIFO) order .
+ *
+ * TODO: implement a deepcopy method
  */
-public class Stack<T> implements Cloneable, Serializable, Iterable<T>
+public class Stack<T> implements Serializable, Iterable<T>
 {
+    private static final long serialVersionUID = 3614863464623083648L;
     private int size;
     private Node head;
 
@@ -156,6 +159,7 @@ public class Stack<T> implements Cloneable, Serializable, Iterable<T>
 
         return head.value;
     }
+
 
 
     /**
