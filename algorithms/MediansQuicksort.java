@@ -6,7 +6,8 @@ import java.util.List;
 /**
  * @author      Antares Chen
  * @since       2015-07-14
- * MediansQuicksort implements quicksort with the pivot chosen by the median of medians algorithm
+ * MediansQuicksort implements quicksort with the pivot chosen by the median of medians algorithm. Medians are
+ * calculated using the quickselect algorithm. Praise be to the CS gods: Blum, Floyd, Pratt, Rivest, and Tarjan.
  */
 
 public class MediansQuicksort extends Quicksort
@@ -21,7 +22,7 @@ public class MediansQuicksort extends Quicksort
     protected <T extends Comparable<T>> T getPivot(List<T> list)
     {
         if (list.size() <= 5)
-            return getMedian(list);
+            return select(list, (int) Math.ceil(list.size() / 2.0));
         LinkedList<T> medians = new LinkedList<>();
 
         LinkedList<T> sublist = new LinkedList<>();
@@ -31,7 +32,7 @@ public class MediansQuicksort extends Quicksort
 
             if (sublist.size() == 5 || i == list.size() - 1)
             {
-                medians.add(getMedian(sublist));
+                medians.add(select(sublist, (int) Math.ceil(sublist.size() / 2.0)));
                 sublist = new LinkedList<>();
             }
         }
@@ -39,30 +40,36 @@ public class MediansQuicksort extends Quicksort
         return getPivot(medians);
     }
 
+
     /**
-     * Determines the median of a list of five or less elements
+     * Determines the median of a list of five or less elements, this uses the quickselect algorithm
      * @param list
      * @param <T>
      * @return the median
-     * TODO: implement
      */
-    private <T extends Comparable<T>> T getMedian(List<T> list)
+    private <T extends Comparable<T>> T select(List<T> list, int position)
     {
-//        assert list.size() <= 5;
-//
-//        if (list.size() == 1)
-//            return list.get(0);
-//        else if (list.size() == 2)
-//        {
-//            if (list.get(1).compareTo(list.get(0)) < 0)
-//                return list.get(0);
-//            return list.get(1);
-//        }
-//        else if (list.size() == 3)
-//        {
-//            if (list.get(1))
-//        }
+        LinkedList<T> less = new LinkedList<>();
+        LinkedList<T> equal = new LinkedList<>();
+        LinkedList<T> greater = new LinkedList<>();
 
-        return list.get(0);
+        T pivot = list.get((int) Math.ceil(list.size() / 2.0));
+
+        for (T element : list)
+        {
+            if (element.compareTo(pivot) < 0)
+                less.add(element);
+            else if (element.compareTo(pivot) == 0)
+                equal.add(element);
+            else
+                greater.add(element);
+        }
+
+        if (position < less.size())
+            return select(less, position);
+        else if (position > less.size() + equal.size())
+            return select(greater, position - less.size() - equal.size());
+        else
+            return pivot;
     }
 }
