@@ -13,22 +13,23 @@ import java.util.NoSuchElementException;
  * The stack data structure is a sequential list accessed in Last In First Out (LIFO) order .
  *
  * TODO: implement a deepcopy method
+ * TODO: disable the ability to add null objects to stack
  */
-public class Stack<T> implements Serializable, Iterable<T>
+public class Stack<E> implements Serializable, Iterable<E>
 {
     private static final long serialVersionUID = 3614863464623083648L;
     private int size;
-    private Node head;
+    private Node<E> head;
 
     /**
      * Node helper class represents a member of the stack.
      */
-    private class Node
+    private static class Node<E>
     {
-        private T value;
-        private Node next;
+        private E value;
+        private Node<E> next;
 
-        Node(T value, Node next)
+        Node(E value, Node<E> next)
         {
             this.value = value;
             this.next = next;
@@ -50,10 +51,10 @@ public class Stack<T> implements Serializable, Iterable<T>
      * Instantiates a stack taking elements from an array
      * @param array
      */
-    public Stack(T[] array)
+    public Stack(E[] array)
     {
         size = 0;
-        for (T value : array)
+        for (E value : array)
             push(value);
     }
 
@@ -62,10 +63,10 @@ public class Stack<T> implements Serializable, Iterable<T>
      * Instantiates a stack taking elements from a list
      * @param list
      */
-    public Stack(List<T> list)
+    public Stack(List<E> list)
     {
         size = 0;
-        for (T value : list)
+        for (E value : list)
             push(value);
     }
 
@@ -94,10 +95,9 @@ public class Stack<T> implements Serializable, Iterable<T>
      * Pushes a new value on to the stack
      * @param value
      */
-    public boolean push(T value)
+    public boolean push(E value)
     {
-        Node node = new Node(value, head);
-        head = node;
+        head = new Node<>(value, head);
         size ++;
         return true;
     }
@@ -108,12 +108,11 @@ public class Stack<T> implements Serializable, Iterable<T>
      * @param values
      * @return if pushed
      */
-    public boolean push(List<T> values)
+    public boolean push(List<E> values)
     {
-        for (T value : values)
+        for (E value : values)
         {
-            Node node = new Node(value, head);
-            head = node;
+            head = new Node<>(value, head);
             size ++;
         }
         return true;
@@ -125,7 +124,7 @@ public class Stack<T> implements Serializable, Iterable<T>
      * @param values
      * @return if pushed
      */
-    public boolean push(T... values)
+    public boolean push(E... values)
     {
         push(Arrays.asList(values));
         return true;
@@ -136,12 +135,12 @@ public class Stack<T> implements Serializable, Iterable<T>
      * Pops the topmost element of the stack
      * @return stack head
      */
-    public T pop()
+    public E pop()
     {
         if (isEmpty())
             throw new NoSuchElementException("Stack underflow");
 
-        Node popped = head;
+        Node<E> popped = head;
         head = head.next;
         size --;
         return popped.value;
@@ -152,7 +151,7 @@ public class Stack<T> implements Serializable, Iterable<T>
      * Returns the topmost element without removing it
      * @return stack head
      */
-    public T peek()
+    public E peek()
     {
         if (isEmpty())
             throw new NoSuchElementException("Stack underflow");
@@ -170,7 +169,7 @@ public class Stack<T> implements Serializable, Iterable<T>
     public String toString()
     {
         String beans = "[";
-        for (T value : this)
+        for (E value : this)
             beans += value + ", ";
 
         beans = beans.substring(0, beans.length() - 2) + "]";
@@ -183,7 +182,7 @@ public class Stack<T> implements Serializable, Iterable<T>
      * @return stack iterator
      */
     @Override
-    public Iterator<T> iterator()
+    public Iterator<E> iterator()
     {
         return new ListIterator();
     }
@@ -192,9 +191,9 @@ public class Stack<T> implements Serializable, Iterable<T>
     /**
      * Defines the list iterator linked with stack objects
      */
-    private class ListIterator implements Iterator<T>
+    private class ListIterator implements Iterator<E>
     {
-        private Node current = head;
+        private Node<E> current = head;
 
         /**
          * Determines if there is a next element while traversing the stack
@@ -208,7 +207,7 @@ public class Stack<T> implements Serializable, Iterable<T>
 
 
         /**
-         * Removes the element after it is traversed. This operation is not supported.
+         * Removes the element after it is traversed. Ehis operation is not supported.
          */
         @Override
         public void remove()
@@ -222,12 +221,12 @@ public class Stack<T> implements Serializable, Iterable<T>
          * @return next element
          */
         @Override
-        public T next()
+        public E next()
         {
             if (!hasNext())
                 throw new NoSuchElementException();
 
-            T value = current.value;
+            E value = current.value;
             current = current.next;
             return value;
         }

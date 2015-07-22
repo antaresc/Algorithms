@@ -7,25 +7,28 @@ import java.util.NoSuchElementException;
 
 /**
  * @author      Antares Chen
- * @since       2015-07-19
- * The stack data structure is a sequential list accessed in First In First Out (FIFO) order .
+ * @since       2015-07-20
+ * The queue data structure is a sequential list accessed in First In First Out (FIFO) order.
+ *
+ * TODO: disable the ability to add null objects to queue
  */
-public class Queue<T> implements Serializable, Iterable<T>
+public class Queue<E> implements Serializable, Iterable<E>
 {
+    private static final long serialVersionUID = -6539224685556853640L;
     private int size;
-    private Node head;
-    private Node tail;
+    private Node<E> head;
+    private Node<E> tail;
 
 
     /**
      * Node helper class represents a member of the stack.
      */
-    private class Node
+    private static class Node<E>
     {
-        private T value;
-        private Node next;
+        private E value;
+        private Node<E> next;
 
-        Node(T value, Node next)
+        Node(E value, Node<E> next)
         {
             this.value = value;
             this.next = next;
@@ -48,10 +51,10 @@ public class Queue<T> implements Serializable, Iterable<T>
      * Creates a queue from the given array
      * @param array
      */
-    public Queue(T[] array)
+    public Queue(E[] array)
     {
         size = 0;
-        for (T value : array)
+        for (E value : array)
             enqueue(value);
     }
 
@@ -60,7 +63,7 @@ public class Queue<T> implements Serializable, Iterable<T>
      * Creates a queue from the given list
      * @param list
      */
-    public Queue(List<T> list)
+    public Queue(List<E> list)
     {
         size = 0;
         list.forEach(this :: enqueue);
@@ -92,12 +95,12 @@ public class Queue<T> implements Serializable, Iterable<T>
      * each node.
      * @return copy of queue
      */
-    public Queue<T> deepCopy()
+    public Queue<E> deepCopy()
     {
-        Queue<T> copy = new Queue<>();
+        Queue<E> copy = new Queue<>();
         if (this.head != null)
         {
-            Node current = this.head;
+            Node<E> current = this.head;
             while (current != null)
             {
                 copy.enqueue(current.value);
@@ -114,7 +117,7 @@ public class Queue<T> implements Serializable, Iterable<T>
      * Returns the next value to be dequeued without actually dequeuing
      * @return
      */
-    public T peek()
+    public E peek()
     {
         if (isEmpty())
             throw new NoSuchElementException("Queue underflow");
@@ -128,16 +131,16 @@ public class Queue<T> implements Serializable, Iterable<T>
      * @param value
      * @return if enqueued
      */
-    public boolean enqueue(T value)
+    public boolean enqueue(E value)
     {
         if (isEmpty())
         {
-            head = new Node(value, null);
+            head = new Node<>(value, null);
             tail = head;
         }
         else
         {
-            Node node = new Node(value, null);
+            Node<E> node = new Node<>(value, null);
             node.value = value;
             tail.next = node;
             tail = tail.next;
@@ -152,9 +155,9 @@ public class Queue<T> implements Serializable, Iterable<T>
      * @param values
      * @return if enqueued
      */
-    public boolean enqueue(T... values)
+    public boolean enqueue(E... values)
     {
-        for (T value : values)
+        for (E value : values)
             assert this.enqueue(value);
 
         return true;
@@ -166,9 +169,9 @@ public class Queue<T> implements Serializable, Iterable<T>
      * @param values
      * @return if enqueued
      */
-    public boolean enqueue(List<T> values)
+    public boolean enqueue(List<E> values)
     {
-        for (T value: values)
+        for (E value: values)
             assert this.enqueue(value);
 
         return true;
@@ -179,12 +182,12 @@ public class Queue<T> implements Serializable, Iterable<T>
      * Removes the next element in the queue
      * @return element
      */
-    public T dequeue()
+    public E dequeue()
     {
         if (isEmpty())
             throw new NoSuchElementException("Queue underflow");
 
-        Node dequeue = head;
+        Node<E> dequeue = head;
         head = head.next;
 
         if (isEmpty())
@@ -204,7 +207,7 @@ public class Queue<T> implements Serializable, Iterable<T>
     {
         String beans = "[";
 
-        for (T value : this)
+        for (E value : this)
             beans += value + ", ";
 
         beans = beans.substring(0, beans.length() - 2) + "]";
@@ -213,7 +216,7 @@ public class Queue<T> implements Serializable, Iterable<T>
 
 
     @Override
-    public Iterator<T> iterator()
+    public Iterator<E> iterator()
     {
         return new ListIterator();
     }
@@ -221,9 +224,9 @@ public class Queue<T> implements Serializable, Iterable<T>
     /**
      * Class that defines the list iterator for queue.
      */
-    private class ListIterator implements Iterator<T>
+    private class ListIterator implements Iterator<E>
     {
-        private Node current = head;
+        private Node<E> current = head;
 
         /**
          * Determines if there is a next element while traversing the queue
@@ -249,12 +252,12 @@ public class Queue<T> implements Serializable, Iterable<T>
          * @return next element
          */
         @Override
-        public T next()
+        public E next()
         {
             if (!hasNext())
                 throw new NoSuchElementException();
 
-            T value = current.value;
+            E value = current.value;
             current = current.next;
             return value;
         }
