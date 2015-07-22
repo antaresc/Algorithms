@@ -1,6 +1,6 @@
 package main.com.acscooter.algorithms;
 
-import java.util.LinkedList;
+import main.com.acscooter.datastructures.LinkedList;
 import java.util.List;
 
 /**
