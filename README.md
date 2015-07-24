@@ -27,6 +27,6 @@ Current algorithms includes:
 Disclaimer
 ----------
 All jokes aside, this package is not meant to be used during competitions that disallow the use of previously written 
-code. Please be fair and follow the rules. Also sometimes I test my code with a strong emphasis on sometimes. If 
+code. Please be fair and follow the rules. Also sometimes I test my code with a strong emphasis on *sometimes*. If 
 anything is broken, or there are better methods of implementing certain functionalities please contact me and let me 
 know! 
