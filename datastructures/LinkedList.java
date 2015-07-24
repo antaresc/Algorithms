@@ -117,7 +117,7 @@ public class LinkedList<E> extends AbstractSequentialList<E> implements Iterable
         LinkedListIterator(int index)
         {
             if (index < 0 || index > size)
-                throw new IndexOutOfBoundsException(String.format("Index: %d, Size %d", index, size));
+                throw new IndexOutOfBoundsException(String.format("Index %d, size %d", index, size));
 
             if (index < size / 2)
             {
