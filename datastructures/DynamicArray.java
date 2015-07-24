@@ -11,7 +11,27 @@ import java.util.NoSuchElementException;
  * @author      Antares Chen
  * @since       2015-07-22
  *
- * DynamicArray
+ * An implementation of a dynamic size-adjusting array inspired by Stanford lecturer Keith Schwarz. For a full
+ * description of the theory visit <a href="http://www.keithschwarz.com/interesting/code/?dir=extendible-array">here</>
+ * . Also check out his archive of interesting code <a href= "http://www.keithschwarz.com/interesting/">here</>.
+ *
+ * The dynamic array is implemented in Java's STL using the ArrayList class. ArrayList functions by maintaining a
+ * self-adjusting array that doubles in size whenever it reaches capacity. Their implementation gives insert an
+ * amortized O(1) cost but any other function such as size, lookup. may take O(n) time to complete. The difference
+ * between the ArrayList and this implementation is that while ArrayList doubles the size of the array as it
+ * reaches capacity, this one pre-creates the buffer and then moves elements from the old array over to the buffer
+ * as new elements are added in. At the cost of a less intuitive implementation, this scheme allows for constant time
+ * guarantees for lookup, size, add-to and remove-from-end operations.
+ *
+ * Schwarz's implementation had one hole in that the array always carried around a dummy element at the beginning of
+ * the list due to how the object is first instantiated. This can be easily solved (with no noticeable affect on time
+ * bounds) by allowing for the array to remain "non-dynamic" until the first resizing. That is, this object basically
+ * acts as a wrapper class for Arrays until the first resizing. A dynamic array can also lose dynamism if its size is
+ * lower than 3 for ease of implementation. This added boolean variable only slightly changes the implementation of
+ * add, get, set, and remove. The base algorithms are all the same so for a deeper explanation, check the comments
+ * in the link provided above.
+ *
+ * As an added bonus, the iterable interface is implemented so one can traverse this using a for each loop
  */
 @SuppressWarnings("unchecked")
 public final class DynamicArray<E> extends AbstractList<E> implements Iterable<E>, Serializable, List<E>
@@ -51,6 +71,11 @@ public final class DynamicArray<E> extends AbstractList<E> implements Iterable<E
         end = currentArray.length;
     }
 
+    /**
+     * Comments to come later
+     * @param e
+     * @return
+     */
     @Override
     public boolean add(E e)
     {
@@ -80,6 +105,11 @@ public final class DynamicArray<E> extends AbstractList<E> implements Iterable<E
         return true;
     }
 
+    /**
+     * Comments to come later
+     * @param index
+     * @param element
+     */
     @Override
     public void add(int index, E element)
     {
@@ -120,6 +150,11 @@ public final class DynamicArray<E> extends AbstractList<E> implements Iterable<E
 
     }
 
+    /**
+     * Comments to come later
+     * @param index
+     * @return
+     */
     @Override
     public E get(int index)
     {
@@ -137,6 +172,12 @@ public final class DynamicArray<E> extends AbstractList<E> implements Iterable<E
         return end;
     }
 
+    /**
+     * Comments to come later
+     * @param index
+     * @param value
+     * @return
+     */
     // In the non-dynamic stage, comparing things to shadow and accessing oldArray would break things, but since we
     // cheat and set oldArray to currentArray during non-dynamic stage, then its all good.
     @Override
