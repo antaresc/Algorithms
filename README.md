@@ -1,4 +1,24 @@
-# Algorithms
-A collection of algorithms implemented in Java. 
+Algorithms
+==========
+Have you ever been in the middle of USACO, ICPC, TopCoder competition and thought to yourself, "God I wish I had 
+implemented this earlier!" or "Man I'm really hungry right now." Well me too (more the second than the first). 
+Introducing Algorithms! a grab bag collection of java algorithms and data structures that will reduce your
+time needlessly implementing code.
 
-Also mostly none of the code has been tested
+
+Package Contents: Data Structures
+---------------------------------
+Current data structures include: Queues, Stacks, LinkedLists.
+
+
+Package Contents: Algorithms
+----------------------------
+Current algorithms includes: Quicksort with three variants: naive, randomized, and median-of-medians.
+
+
+Disclaimer
+----------
+All jokes aside, this package is not meant to be used during competitions that disallow the use of previously written 
+code. Please be fair and follow the rules. Also sometimes I test my code with a strong emphasis on sometimes. If 
+anything is broken, or there are better methods of implementing certain functionalities please contact me and let me 
+know! 
