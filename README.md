@@ -8,12 +8,20 @@ time needlessly implementing code.
 
 Package Contents: Data Structures
 ---------------------------------
-Current data structures include: Queues, Stacks, LinkedLists.
+Current data structures include: 
+*Queues
+*Stacks
+*LinkedLists
+*Dynamic Arrays
 
 
 Package Contents: Algorithms
 ----------------------------
-Current algorithms includes: Quicksort with three variants: naive, randomized, and median-of-medians.
+Current algorithms includes: 
+*Quicksort with three variants
+**naive
+**randomized
+**median-of-medians
 
 
 Disclaimer
