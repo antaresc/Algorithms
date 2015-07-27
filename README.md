@@ -18,10 +18,14 @@ Current data structures include:
 Package Contents: Algorithms
 ----------------------------
 Current algorithms includes: 
-+  Quicksort with three variants
++   Quicksort with three variants
     +   Naive
     +   Randomized
     +   Median-of-medians
++   Merge sort
++   Insertion sort
++   Bubble sort
++   Bogo sort
 
 
 Disclaimer

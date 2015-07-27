@@ -7,7 +7,8 @@ import java.util.List;
 /**
  * @author      Antares Chen
  * @since       2015-07-14
- * Sortable interface designates sorting algorithms
+ * A base class for sorting algorithms. The method sort is subject to change with the algorithm so we'll leave that
+ * abstract. A nice wrapper for arrays is provided.
  */
 public abstract class Sort
 {
@@ -28,5 +29,5 @@ public abstract class Sort
      * @param <T>
      * @return sorted array
      */
-    abstract <T extends Comparable<T>> List<T> sort(List<T> list);
+    public abstract <T extends Comparable<T>> List<T> sort(List<T> list);
 }
