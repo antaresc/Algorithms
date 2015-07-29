@@ -26,6 +26,7 @@ Current algorithms includes:
 +   Insertion sort
 +   Bubble sort
 +   Bogo sort
++   Selection sort
 
 
 Disclaimer
