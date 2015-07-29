@@ -4,7 +4,7 @@ import java.util.List;
 
 /**
  * @author      Antares Chen
- * @since       2015-07-27
+ * @since       2015-07-28
  *
  * The insertion sort is actually a pretty intuitive sort. Chances are you've done it many times when playing card games
  * such as President or 5-card Poker. The technical description of insertion sort is as follows. Given an array of N
@@ -31,7 +31,7 @@ public class InsertionSort extends Sort
      * Basic implementation of insertion sort.
      * @param list
      * @param <T>
-     * @return
+     * @return sorted list
      */
     @Override
     public <T extends Comparable<T>> List<T> sort(List<T> list)
