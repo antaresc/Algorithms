@@ -29,7 +29,8 @@ import java.util.List;
 public class BogoBogoSort extends BogoSort
 {
     /**
-     * Simple implementation of the recursive algorithm that checks if the array is sorted.
+     * Simple implementation of the recursive algorithm that checks if the array is sorted. Because of object
+     * orientation, we can simply override the isSorted method without changing anything else in super class BogoSort.
      * @param list
      * @param <T>
      * @return
