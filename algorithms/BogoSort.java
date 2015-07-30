@@ -29,15 +29,29 @@ import java.util.Random;
  */
 public class BogoSort extends Sort
 {
+    /**
+     * Bogo sort algorithm implementation. A small optimization step is added where if the list is of size one, the
+     * algorithm will ignore the array since it is trivially sorted.
+     * @param list
+     * @param <T>
+     * @return
+     */
     @Override
     public <T extends Comparable<T>> List<T> sort(List<T> list)
     {
-        while (! isSorted(list))
-            list = shuffle(list);
+        if (list.size() > 1)
+            while (! isSorted(list))
+                list = shuffle(list);
 
         return list;
     }
 
+    /**
+     * Standard Fisher-Yates shuffle with some added tweaks.
+     * @param list
+     * @param <T>
+     * @return shuffled array
+     */
     public <T> List<T> shuffle(List<T> list)
     {
         for (int i = 0; i < list.size() - 1; i ++)
@@ -53,7 +67,7 @@ public class BogoSort extends Sort
         return list;
     }
 
-    private <T extends Comparable<T>> boolean isSorted(List<T> list)
+    protected <T extends Comparable<T>> boolean isSorted(List<T> list)
     {
         for (int i = 1; i < list.size(); i ++)
             if (list.get(i).compareTo(list.get(i - 1)) < 0)
