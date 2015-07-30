@@ -47,7 +47,7 @@ public class MediansQuicksort extends Quicksort
      * @param <T>
      * @return the median
      */
-    private <T extends Comparable<T>> T select(List<T> list, int position)
+    public <T extends Comparable<T>> T select(List<T> list, int position)
     {
         LinkedList<T> less = new LinkedList<>();
         LinkedList<T> equal = new LinkedList<>();
