@@ -105,20 +105,20 @@ public class BinaryHeap <E extends Comparable<E>> implements PriorityQueue<E>
 
     /**
      * Comments to come later
-     * @param value
+     * @param e
      * @param key
      * @return previous element
      */
     @Override
-    public E increaseKey(E value, E key)
+    public E increaseKey(E e, E key)
     {
-        if (key.compareTo(value) < 0)
+        if (key.compareTo(e) < 0)
             throw new IllegalStateException("Key must be greater than current value.");
 
-        int targetIndex = heap.indexOf(value);
+        int targetIndex = heap.indexOf(e);
         heap.set(targetIndex, key);
         heapUp(targetIndex);
-        return value;
+        return e;
     }
 
     /**
