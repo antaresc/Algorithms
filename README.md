@@ -13,6 +13,8 @@ Current data structures include:
 +   Stacks
 +   LinkedLists
 +   Dynamic Arrays
++   Binary Heap
++   Binary Search Tree
 
 
 Package Contents: Algorithms
