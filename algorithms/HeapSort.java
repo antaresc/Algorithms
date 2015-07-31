@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Created by antares on 7/30/15.
  */
-public class HeapSort extends Sort
+public class HeapSort extends AbstractSort
 {
 
     @Override

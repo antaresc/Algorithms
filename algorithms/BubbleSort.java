@@ -16,7 +16,7 @@ import java.util.List;
  * once said, "the bubble sort seems to have nothing to recommend it." and the Jargon File states that Bubble Sort is
  * the "generic bad algorithm." Poor bubble sort, I still believe in you if only for your eccentric sorting methods!
  */
-public class BubbleSort extends Sort
+public class BubbleSort extends AbstractSort
 {
     /**
      * A short implementation of Bubble Sort. There are some interesting methods of optimizing Bubble Sort. For example,

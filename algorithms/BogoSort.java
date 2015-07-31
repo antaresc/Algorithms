@@ -27,7 +27,7 @@ import java.util.Random;
  * random element after it. This is mathematically proven to give each possible permutation of the array an equal
  * probability of occurrence.
  */
-public class BogoSort extends Sort
+public class BogoSort extends AbstractSort
 {
     /**
      * Bogo sort algorithm implementation. A small optimization step is added where if the list is of size one, the

@@ -20,7 +20,7 @@ import java.util.List;
  * actually leads to multiple variants of quicksort: randomized, median of medians, etc. However for now, we provide
  * a naive implementation of quicksort which uses the first element of the list as a pivot.
  */
-public class Quicksort extends Sort
+public class Quicksort extends AbstractSort
 {
     /**
      * A naive implementation of quicksort that uses the first element as a pivot.

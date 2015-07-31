@@ -26,7 +26,7 @@ import java.util.List;
  * not the point but still)). Perhaps the only redeeming quality of this sort is the fact that its one of the easier
  * sorting algorithms to intuit. Oh well, poor selection sort.
  */
-public class SelectionSort extends Sort
+public class SelectionSort extends AbstractSort
 {
     /**
      * A non-stable implementation of Selection sort. A stable version can be implemented if instead of swapping

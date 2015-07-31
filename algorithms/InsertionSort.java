@@ -25,7 +25,7 @@ import java.util.List;
  * For time complexity this sort runs in O(n^2) for the same reason that Selection sort runs O(n^2). Simply consider
  * the worst case scenario where the input array is in reverse sorted order.
  */
-public class InsertionSort extends Sort
+public class InsertionSort extends AbstractSort
 {
     /**
      * Basic implementation of insertion sort.

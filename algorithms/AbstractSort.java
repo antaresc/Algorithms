@@ -10,7 +10,7 @@ import java.util.List;
  * A base class for sorting algorithms. The method sort is subject to change with the algorithm so we'll leave that
  * abstract. A nice wrapper for arrays is provided.
  */
-public abstract class Sort
+public abstract class AbstractSort
 {
     /**
      * Wrapper method for sorting arrays

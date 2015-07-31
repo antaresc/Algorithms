@@ -25,7 +25,7 @@ import java.util.List;
  * none of that made sense, don't worry! Just trust that the result is T(n) = O(n log n). Also wikipedia might be a nice
  * place to start.
  */
-public class MergeSort extends Sort
+public class MergeSort extends AbstractSort
 {
     /**
      * Basic implementation of the Merge sort algorithm. There are some small optimizing tricks you can use such as
