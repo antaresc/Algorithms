@@ -2,6 +2,7 @@ package main.com.acscooter.datastructures;
 
 import sun.tools.tree.BinaryArithmeticExpression;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.NoSuchElementException;
 
@@ -34,8 +35,9 @@ import java.util.NoSuchElementException;
  *
  * The below implementation backs the heap with a DynamicArray array.
  */
-public class BinaryHeap <E extends Comparable<E>> implements PriorityQueue<E>
+public class BinaryHeap <E extends Comparable<E>> implements PriorityQueue<E>, Serializable
 {
+    private static final long serialVersionUID = -560207236837089452L;
     private DynamicArray<E> heap;
 
     public BinaryHeap()
