@@ -6,18 +6,13 @@ import java.util.List;
 /**
  * @author      Antares Chen
  * @since       2015-07-14
- * MediansQuicksort implements quicksort with the pivot chosen by the median of medians algorithm. Medians are
- * calculated using the quickselect algorithm. Praise be to the CS gods: Blum, Floyd, Pratt, Rivest, and Tarjan.
+ * MediansQuicksort implements quicksort with the pivot chosen by the median
+ * of medians algorithm. Medians are calculated using the quickselect algorithm.
+ * Praise be to the CS gods: Blum, Floyd, Pratt, Rivest, and Tarjan.
  */
-
 public class MediansQuicksort extends Quicksort
 {
-    /**
-     * Chooses the pivot using the median of medians algorithm
-     * @param list
-     * @param <T>
-     * @return pivot index
-     */
+    /** Returns a pivot of LIST via the median-of-medians algorithm. */
     @Override
     protected <T extends Comparable<T>> T getPivot(List<T> list)
     {
@@ -32,7 +27,8 @@ public class MediansQuicksort extends Quicksort
 
             if (sublist.size() == 5 || i == list.size() - 1)
             {
-                medians.add(select(sublist, (int) Math.ceil(sublist.size() / 2.0)));
+                medians.add(select(sublist,
+                            (int) Math.ceil(sublist.size() / 2.0)));
                 sublist = new LinkedList<>();
             }
         }
@@ -41,14 +37,9 @@ public class MediansQuicksort extends Quicksort
     }
 
 
-    /**
-     * Determines the median of a list of five or less elements, this uses the quickselect algorithm
-     * @param list
-     * @param <T>
-     * @return the median
-     */
-    public <T extends Comparable<T>> T select(List<T> list, int position)
-    {
+    /** Returns the median of LIST given POSITION based on the quickselect
+     *  algorithm. */
+    public <T extends Comparable<T>> T select(List<T> list, int position) {
         LinkedList<T> less = new LinkedList<>();
         LinkedList<T> equal = new LinkedList<>();
         LinkedList<T> greater = new LinkedList<>();

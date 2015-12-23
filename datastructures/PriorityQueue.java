@@ -1,52 +1,28 @@
 package main.com.acscooter.datastructures;
 
-/**
- * @author      Antares Chen
- * @since       2015-07-30
+/** A simple interface for a max-priority queue. It is optimized for the
+ *  removal of elements with highest priority.
  *
- * The max-priority queue is an ordered queue that optimizes for the removal of the element with highest priority. It is
- * an abstract data structure that needs to be backed up by more concrete data structures such as Binary Heaps,
- * Fibonacci Heaps, self balancing trees, and others. The basic max-queue should be able to support operations such as
- * add, isEmpty, size, peek, remove (max), and increaseKey.
- */
-public interface PriorityQueue<E>
+ *  @author      Antares Chen
+ *  @since       2015-07-30 */
+public interface PriorityQueue<Element>
 {
-    /**
-     * Inserts an element into the priority queue (or underlying data structure).
-     * @param value
-     * @return if added
-     */
-    boolean add(E value);
+    /** Inserts VALUE into the priority queue. Returns if VALUE was added. */
+    boolean add(Element value);
 
-    /**
-     * Determines if the queue is empty.
-     * @return if empty
-     */
+    /** Returns if the value is empty. */
     boolean isEmpty();
 
-    /**
-     * Returns the size of the priority queue.
-     * @return the size
-     */
+    /** Returns the size of the priority queue. */
     int size();
 
-    /**
-     * Returns the current element with highest priority without removing it
-     * @return max element
-     */
-    E peek();
+    /** Returns the first element in the priority queue. */
+    Element peek();
 
-    /**
-     * Removes the current element with highest priority.
-     * @return max element
-     */
-    E remove();
+    /** Returns and removes the current element with highest priority. */
+    Element remove();
 
-    /**
-     * Increases the priority of element e to the same value as key
-     * @param e
-     * @param key
-     * @return the previous e
-     */
-    E increaseKey(E e, E key);
+    /** Increases the priority of E to the same value as KEY. Returns E. */
+    Element increaseKey(Element e, Element key);
+    
 }
