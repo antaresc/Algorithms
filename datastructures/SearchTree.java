@@ -6,7 +6,8 @@ package main.com.acscooter.datastructures;
  */
 public interface SearchTree<Key extends Comparable<Key>, Value> {
 
-    /** Returns the value associated with KEY. */
+    /** Returns the value associated with KEY. Returns null if the key does
+     *  not exist. */
     Value find(Key key);
 
     /** Returns value associated with the minimum key. Optional operation. */
@@ -22,6 +23,4 @@ public interface SearchTree<Key extends Comparable<Key>, Value> {
     /** Removes KEY from the tree and returns the value associated with it. */
     Value remove(Key key);
 
-    /** Returns the number of vertices in the tree. */
-    int size();
 }

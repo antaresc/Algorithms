@@ -15,6 +15,4 @@ public interface Heap<Value extends Comparable<Value>> {
     /** Inserts VALUE into the heap. */
     void insert(Value value);
 
-    /** Returns the number of elements in the heap. */
-    int size();
 }
