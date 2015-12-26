@@ -6,24 +6,22 @@ import java.util.HashSet;
 import java.util.NoSuchElementException;
 import java.util.Set;
 
-/**
- * @author      Antares Chen
- * @since       2015-08-03
+/** The Binary Search Tree is a tree where each node may have at max two
+ *  children. The tree also maintains the following property at all times:
  *
- * The binary search tree is a tree where each node may have at max two children. At all times, the tree also maintains
- * the following property:
+ *  If a node possesses a left child, then the child must have a value less
+ *  than the parent. If a node possesses a right child, then the child must
+ *  have a value greater than or equal to the parent.
  *
- *      If a node possesses a left child, then the child must have value less than the parent. If a node possesses a
- *      right child, then the child must have a value greater than or equal to the parent.
- *
- * The "or equal to" part is arbitrarily chosen and doesn't affect run time drastically. More comments to come later.
- *
+ *  @author Antares Chen
+ *  @since  2015-08-03
  */
-public class BinarySearchTree<K extends Comparable<K>, V> implements Map<K, V> {
+public class BinarySearchTree<Key extends Comparable<K>, Value>
+    implements Map<Key, Value> {
 
     public BinarySearchTree() {
 
     }
 
-    
+
 }
