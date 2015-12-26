@@ -1,11 +1,5 @@
 package main.com.acscooter.datastructures;
 
-import java.io.Serializable;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.NoSuchElementException;
-import java.util.Set;
-
 /** The Binary Search Tree is a tree where each node may have at max two
  *  children. The tree also maintains the following property at all times:
  *

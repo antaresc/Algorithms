@@ -1,7 +1,5 @@
 package main.com.acscooter.datastructures;
 
-import sun.tools.tree.BinaryArithmeticExpression;
-
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.NoSuchElementException;
