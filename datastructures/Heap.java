@@ -15,4 +15,8 @@ public interface Heap<Value extends Comparable<Value>> {
     /** Inserts VALUE into the heap. */
     void insert(Value value);
 
+    /** Returns the current VALUE and increases the importance of VALUE to
+     *  NEWVALUE. */
+    Value increaseKey(Value value, Value newValue);
+    
 }
