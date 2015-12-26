@@ -1,10 +1,12 @@
-import java.utils.Collection;
-import java.utils.Set;
+package main.com.acscooter.datastructures;
+
+import java.util.Collection;
+import java.util.Set;
 
 /** An interface describing a generic map between two collection of objects.
- *
  *  @author Antares Chen
- *  @since  2015-12-22 */
+ *  @since  2015-12-22
+ */
 public interface Map<Key, Value> {
 
     /** Clears the Map of all Key, Value pairs. */

@@ -10,65 +10,57 @@ import java.util.NoSuchElementException;
 /** A Queue is an abstract data structure that only allows removal from the
  *  front of the list and insertion from the back. That is to say elements are
  *  accessed in a First In First Out (FIFO) order.
- *
  *  @author Antares Chen
  *  @since  2015-07-19 */
 public class Queue<Element> implements Iterable<Element> {
 
     /** The underlying dequeue object. */
-    private Dequeue<Element> queue;
+    private CircularBuffer<Element> _queue;
 
     /** Initializes an empty queue */
     public Queue() {
-        queue = new Dequeue<Element>();
+        _queue = new CircularBuffer<Element>();
     }
 
     /** Initializes an empty queue of size SIZE. */
     public Queue(int size) {
-        queue = new Dequeue<Element>(size);
+        _queue = new CircularBuffer<Element>(size);
     }
 
     /** Returns if the queue is empty. */
     public boolean isEmpty() {
-        return queue.isEmpty();
+        return _queue.isEmpty();
     }
-
 
     /** Returns the size of the queue. */
     public int size() {
-        return queue.size();
+        return _queue.size();
     }
-
 
     /** Inserts VALUE onto the end of the queue. Returns if the value was
      *  added. */
     public boolean enqueue(E value) {
-        return queue.insertLast(value);
+        return _queue.addTail(value);
     }
 
     /** Returns and removes the front element of the queue. */
     public E dequeue() {
-        return queue.removeFirst();
+        return _queue.removeHead();
     }
 
 
     /** Returns the top of the queue. */
     public E peek() {
-        return queue.peek();
+        return _queue.getHead();
     }
 
     @Override
     public String toString() {
-        String beans = "[";
-        for (E value : this)
-            beans += value + ", ";
-
-        beans = beans.substring(0, beans.length() - 2) + "]";
-        return beans;
+        return _queue.toString();
     }
 
     @Override
     public Iterator<E> iterator() {
-        return new queue.iterator();
+        return _queue.iterator();
     }
 }
