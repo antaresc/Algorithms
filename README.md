@@ -15,6 +15,7 @@ Current data structures include:
 +   Dynamic Array
 +   Binary Heap
 +   Binary Search Tree
++   Red-Black Tree
 +   Trie
 +   Graph
 
