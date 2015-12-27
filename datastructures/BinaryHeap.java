@@ -1,10 +1,5 @@
 package main.com.acscooter.datastructures;
 
-import java.io.Serializable;
-import java.util.Collection;
-import java.util.NoSuchElementException;
-
-
 /** The Binary Heap is a tree data structure that maintains the two properties:
  *
  *  (1) A binary heap is a complete binary tree. At all depths, it is always
@@ -25,6 +20,7 @@ import java.util.NoSuchElementException;
  *  Given that our array is 0-indexed, for a node index N, its right and left
  *  children are at index 2 * N + 1 and 2 * N + 2 respectively. Its parent is
  *  at index Ceil(N / 2) - 1.
+ *
  *  @author Antares Chen
  *  @since  2015-07-30
  */
