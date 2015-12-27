@@ -49,8 +49,14 @@ public class BinarySearchTree<Key extends Comparable<Key>, Value>
 
     @Override
     public Value insert(Key key, Value value) {
+        if (key == null) {
+            throw new NullPointerException();
+        } else if (value == null) {
+            return remove(key);
+        }
+
         Value result = find(key);
-        insert(key, value, _root);
+        _root = insert(key, value, _root);
         return result;
     }
 
@@ -74,9 +80,14 @@ public class BinarySearchTree<Key extends Comparable<Key>, Value>
         return node;
     }
 
+
     @Override
     public Value remove(Key key) {
-        remove(key, _root);
+        Value results = find(key);
+        if (results != null) {
+            _root = remove(key, _root);
+        }
+        return results;
     }
 
     /** Removes KEY from the BST starting at NODE. */
@@ -84,13 +95,9 @@ public class BinarySearchTree<Key extends Comparable<Key>, Value>
         if (node == null) {
             return null;
         } else if (key.equals(node._left._key)) {
-            Node temp = node._left;
             node._left = replace(node._left);
-            return temp;
         } else if (key.equals(node._left._key)) {
-            Node temp = node._right;
             node._right = replace(node._right);
-            return temp;
         }
 
         if (key.compareTo(node._key) < 0) {
@@ -98,6 +105,7 @@ public class BinarySearchTree<Key extends Comparable<Key>, Value>
         } else {
             return remove(key, node._right);
         }
+        return node;
     }
 
     /** Returns what child of TARGET should replace its position. */
