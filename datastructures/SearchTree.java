@@ -10,12 +10,6 @@ public interface SearchTree<Key extends Comparable<Key>, Value> {
      *  not exist. */
     Value find(Key key);
 
-    /** Returns value associated with the minimum key. Optional operation. */
-    Value findMin();
-
-    /** Returns value associated with the maximum key. Optional operation. */
-    Value findMax();
-
     /** Inserts VALUE with the key KEY into the tree. Returns the previous
      *  value associated with KEY. */
     Value insert(Key key, Value value);
@@ -23,4 +17,9 @@ public interface SearchTree<Key extends Comparable<Key>, Value> {
     /** Removes KEY from the tree and returns the value associated with it. */
     Value remove(Key key);
 
+    /** Returns value associated with the minimum key. Optional operation. */
+    Value findMin();
+
+    /** Returns value associated with the maximum key. Optional operation. */
+    Value findMax();
 }
