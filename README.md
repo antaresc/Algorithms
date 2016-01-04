@@ -7,6 +7,7 @@ implemented:
 Data Structures
 ---------------
 Current data structures include:
++   Point
 +   Queue
 +   Stack
 +   Dequeue
@@ -19,6 +20,7 @@ Current data structures include:
 +   B-Tree
 +   Trie
 +   Graph
++   QuadEdge
 
 Algorithms
 ----------
