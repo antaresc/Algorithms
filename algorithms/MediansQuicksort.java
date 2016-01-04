@@ -14,19 +14,16 @@ public class MediansQuicksort extends Quicksort
 {
     /** Returns a pivot of LIST via the median-of-medians algorithm. */
     @Override
-    protected <T extends Comparable<T>> T getPivot(List<T> list)
-    {
+    protected <T extends Comparable<T>> T getPivot(List<T> list) {
         if (list.size() <= 5)
             return select(list, (int) Math.ceil(list.size() / 2.0));
         LinkedList<T> medians = new LinkedList<>();
 
         LinkedList<T> sublist = new LinkedList<>();
-        for (int i = 0; i < list.size(); i ++)
-        {
+        for (int i = 0; i < list.size(); i ++) {
             sublist.add(list.get(i));
 
-            if (sublist.size() == 5 || i == list.size() - 1)
-            {
+            if (sublist.size() == 5 || i == list.size() - 1) {
                 medians.add(select(sublist,
                             (int) Math.ceil(sublist.size() / 2.0)));
                 sublist = new LinkedList<>();
@@ -46,8 +43,7 @@ public class MediansQuicksort extends Quicksort
 
         T pivot = list.get((int) Math.ceil(list.size() / 2.0));
 
-        for (T element : list)
-        {
+        for (T element : list) {
             if (element.compareTo(pivot) < 0)
                 less.add(element);
             else if (element.compareTo(pivot) == 0)
