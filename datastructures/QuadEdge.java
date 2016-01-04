@@ -42,15 +42,15 @@ public class QuadEdge<Edge> {
         QuadEdge q1 = new QuadEdge(dest, null, null);
         QuadEdge e1 = new QuadEdge(null, null, null);
 
-        q0.oNext = q0;
-        q1.oNext = q1;
-        e0.oNext = e1;
-        e1.oNext = e0;
+        q0._next = q0;
+        q1._next = q1;
+        e0._next = e1;
+        e1._oext = e0;
 
-        q0.rot = e0;
-        e0.rot = q1;
-        q1.rot = e1;
-        e1.rot = q0;
+        q0._rot = e0;
+        e0._rot = q1;
+        q1._rot = e1;
+        e1._rot = q0;
 
         return q0;
     }
