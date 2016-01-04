@@ -119,7 +119,7 @@ public class QuadEdge<Edge> {
 
     /** Returns the previous quad edge counterclockwise about the origin. */
     public QuadEdge oPrev() {
-        return _rot.next().rot();
+        return _rot.oNext().rot();
     }
 
     /** Returns the next quad edge counterclockwise about the destination. */
@@ -144,7 +144,7 @@ public class QuadEdge<Edge> {
 
     /** Returns the next quad edge counterclockwise about the right face. */
     public QuadEdge rNext() {
-        return _rot.next().rotInv();
+        return _rot.oNext().rotInv();
     }
 
     /** Returns the previous quad edge counterclockwise about the right face. */
@@ -190,8 +190,8 @@ public class QuadEdge<Edge> {
         splice(q, prev.lNext());
         splice(q.sym(), sPrev.lNext());
 
-        e.setOrig(prev.getDest());
-        e.setDest(sPrev.getDest());
+        q.setOrig(prev.getDest());
+        q.setDest(sPrev.getDest());
     }
 
 }
