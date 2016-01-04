@@ -37,9 +37,9 @@ public class QuadEdge<Edge> {
 
     /** Creates a quad edge between two points ORIG and DEST. */
     public static makeEdge(Point orig, Point dest) {
-        QuadEdge q0 = new QuadEdge(null, null, orig);
+        QuadEdge q0 = new QuadEdge(orig, null, null);
         QuadEdge e0 = new QuadEdge(null, null, null);
-        QuadEdge q1 = new QuadEdge(null, null, dest);
+        QuadEdge q1 = new QuadEdge(dest, null, null);
         QuadEdge e1 = new QuadEdge(null, null, null);
 
         q0.oNext = q0;
